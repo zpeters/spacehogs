@@ -15,7 +15,7 @@ var files Files
 var path string
 var topNumber int
 
-const Version = "0.2"
+const Version = "0.0.3"
 
 type File struct {
 	Path string
