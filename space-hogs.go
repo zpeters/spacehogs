@@ -15,7 +15,7 @@ var files Files
 var path string
 var topNumber int
 
-const Version = "0.2"
+const Version = "0.0.3"
 
 type File struct {
 	Path string
@@ -41,7 +41,9 @@ func (s Files) Reverse() {
 
 func WalkFunc(path string, info os.FileInfo, err error) error {
 	if err != nil {
-		//log.Println(err)
+		// Normally there are a lot of files and folder you won't have access to
+		// Uncomment to log when they are encountered
+		// log.Println(err)
 	} else {
 		f := &File{path, int(info.Size())}
 		files = append(files, f)
@@ -64,8 +66,8 @@ func humanizeBytes(bytes int) string {
 }
 
 func usage() {
-	fmt.Printf("Usage: %s -n [Number of resutls] -p [Path]\n", os.Args[0])
-	fmt.Printf("Usage: %s -n [Number of resutls] -p [Path] -html \t\t HTML rendering\n", os.Args[0])
+	fmt.Printf("Usage: %s -n [Number of results] -p [Path]\n", os.Args[0])
+	fmt.Printf("Usage: %s -n [Number of results] -p [Path] -html \t\t HTML rendering\n", os.Args[0])
 	fmt.Printf("Usage: %s -h\t - Display Help\n", os.Args[0])
 	return
 }
